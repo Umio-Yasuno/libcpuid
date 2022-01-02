@@ -378,7 +378,7 @@ static void load_amd_features(struct cpu_raw_data_t* raw, struct cpu_id_t* data)
 
 static void decode_amd_cache_info(struct cpu_raw_data_t* raw, struct cpu_id_t* data)
 {
-	if (data->ext_family >= 15) {
+	if (data->ext_family >= 15 && 0 < raw->amd_fn8000001dh[0][EAX]) {
 		decode_deterministic_cache_info(data, raw->amd_fn8000001dh);
 		return;
 	}
